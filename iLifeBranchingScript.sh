@@ -19,23 +19,23 @@ fi
 # If the machine was purchased the day iLife06 was released or later but before the day iLife 08 was released, then install iLife 06
 if [ "${PURCHASE_DATE}" -ge "${iLife06}" ] && [ "${PURCHASE_DATE}" -lt "${iLife08}" ]; then
 	echo "Installing iLife 06..."
-	echo "RuntimeSelectWorkflow: 040622200000"
+	echo "RuntimeSelectWorkflow: WorkflowID"
 	
 	
 # If the machine was purchased the day iLife08 was released or later but before the day iLife 09 was released, then install iLife 08
 elif [ "${PURCHASE_DATE}" -ge "${iLife08}" ] && [ "${PURCHASE_DATE}" -lt "${iLife09}" ]; then
 	echo "Installing iLife 08..."
-	echo "RuntimeSelectWorkflow: 090812115726"
+	echo "RuntimeSelectWorkflow: WorkflowID"
 
 # If the machine was purchased the day iLife09 was released or later but before the day iLife 11 was released, then install iLife 09
 elif [ "${PURCHASE_DATE}" -ge "$iLife09" ] && [ "${PURCHASE_DATE}" -lt "${iLife11}" ]; then
 	echo "Installing iLife 09..."
-	echo "RuntimeSelectWorkflow: 090812115717"
+	echo "RuntimeSelectWorkflow: WorkflowID"
 
 # If the machine was purchased the day iLife 11 was released or later, install iLife 11
 elif [ "${PURCHASE_DATE}" -ge "${iLife11}" ]; then
 	echo "Installing iLife 11..."
-	echo "RuntimeSelectWorkflow: 101209083542"
+	echo "RuntimeSelectWorkflow: WorkflowID"
 
 # If the machine doesn't match any of these conditions, then it is old.
 else 
