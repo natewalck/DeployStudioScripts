@@ -21,9 +21,9 @@ echo "Activating SSH..."
 launchctl load -w /System/Library/LaunchDaemons/ssh.plist 
 
 # Enable Kerberos (AD) auth for ssh.
-echo KerberosAuthentication yes >> /etc/sshd_config 
-echo KerberosOrLocalPasswd yes >> /etc/sshd_config 
-echo AllowGroups DOMAIN\group admin >> /etc/sshd_config
+echo KerberosAuthentication yes >> /etc/sshd_config
+echo KerberosOrLocalPasswd yes >> /etc/sshd_config
+echo AllowGroups DOMAIN\\group admin >> /etc/sshd_config
 
 echo "Setting munki to bootstrap mode..."
 touch /Users/Shared/.com.googlecode.munki.checkandinstallatstartup
