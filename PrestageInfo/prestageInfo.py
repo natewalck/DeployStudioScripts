@@ -24,28 +24,19 @@ def main():
     if not options.computerName or not options.hostName:
         p.error("incorrect number of arguments")
 
-    # Save options to proper variables
-    computerName = options.computerName
-    hostName = options.hostName
-
     # Get the URL for the DS Server from the runtime plist
     os.system("/usr/bin/plutil -convert xml1 /Library/Preferences/com.deploystudio.server.plist -o /tmp/com.deploystudio.server.plist")
     dsServerURL = plistlib.readPlist("/tmp/com.deploystudio.server.plist")["server"]["url"]
 
-    # Get primary key setting from DS Server
+    # Get DS Server Settings
     dsServerInfo = plistlib.readPlistFromString(urllib2.urlopen(urllib2.Request(dsServerURL + "/server/get/info")).read())
-    dsPrimaryKey = dsServerInfo["computer_primary_key"]
-
-    # Get serial # of the machine
-    global serialNumber
-    serialNumber = os.environ['DS_SERIAL_NUMBER']
 
     # Build the settings plist
     computerPlist = {}
-    computerPlist['dstudio-host-primary-key'] = dsPrimaryKey
-    computerPlist['dstudio-host-serial-number'] = serialNumber
-    computerPlist['cn'] = computerName
-    computerPlist['dstudio-hostname'] = hostName
+    computerPlist['dstudio-host-primary-key'] = dsServerInfo["computer_primary_key"]
+    computerPlist['dstudio-host-serial-number'] = os.environ['DS_SERIAL_NUMBER']
+    computerPlist['cn'] = options.computerName
+    computerPlist['dstudio-hostname'] = options.hostName
 
     postToDeployStudio(dsServerURL, computerPlist)
 
