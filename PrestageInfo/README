@@ -2,3 +2,6 @@ To use this script, you must do the following:
 1.  Run setupDeployStudioAuthorization.py to generate a DeployStudioAuthorization file
 2.  Place 'DeployStudioAuthorization' in the root of your DeployStudio repository
 3.  Add the prestageInfo.py script to DeployStudio.
+
+
+Thanks to tvsutton for the setupDeployStudioAuthorization.py script and the overall method for doing this
